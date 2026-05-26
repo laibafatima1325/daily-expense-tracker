@@ -1,0 +1,19 @@
+Date: 26-05-2026
+Category: Food
+Amount: 500
+Note: lunch
+===============
+Date: 26-05-2026
+Category: Food
+Amount: 500
+Note: lunch
+===============
+Date: 26-05-2026
+Category: Food
+Amount: 500
+Note: lunch
+===============
+Date: 27-05-2026
+Category: Shopping
+Amount: 300
+Note: medicine
