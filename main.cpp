@@ -87,7 +87,7 @@ void addExp()
         }
         if(choice < 1 || choice > 8)
         {
-            cout <<"Invalid! Please enter numbers between 1 and 9: ";
+            cout <<"Invalid! Please enter numbers between 1 and 8: ";
             cin>> choice;
         }
         if(choice == 1)
