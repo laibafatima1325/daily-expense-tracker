@@ -17,3 +17,16 @@ Date: 27-05-2026
 Category: Shopping
 Amount: 300
 Note: medicine
+===============
+Date: 28-05-2026
+Category: Shopping
+Amount: 3000
+Note: frock
+===============
+Date: 28-05-2026
+Category: Transport
+Amount: 3000
+Note: travel
+Category: Shopping
+Amount: 2000
+Note: serum

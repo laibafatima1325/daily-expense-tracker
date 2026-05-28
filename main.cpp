@@ -76,24 +76,19 @@ void addExp()
         cout<<"6. Education" <<endl;
         cout<<"7. Entertainment" <<endl;
         cout<<"8. Other"<<endl;
-        cout<<"9. Exit"<<endl;
         cout<<"Please select a category for which you want to add an expense: " ;
         cin>> choice;
         if(cin.fail())
         {
             cin.clear();
             cin.ignore(1000, '\n');
-            cout << "Invalid input! Please enter only numbers(1-9): ";
+            cout << "Invalid input! Please enter only numbers(1-8): ";
             cin>> choice;
         }
-        if(choice < 1 || choice > 9)
+        if(choice < 1 || choice > 8)
         {
             cout <<"Invalid! Please enter numbers between 1 and 9: ";
             cin>> choice;
-        }
-        if(choice == 9)
-        {
-            return;
         }
         if(choice == 1)
             category = "Food";
@@ -139,13 +134,16 @@ void addExp()
 
         storeExp(category, amount, note);
 
-        cout<<"/nExpense added successfully!"<<endl;
+        cout<<"\nExpense added successfully!"<<endl;
         cout<<"1. Add another expense"<<endl;
         cout<<"2. Finish day"<<endl;
         cout<<"Please select an option: ";
         cin>> option;
         cin.ignore(1000, '\n');
-        break;
+        if(option == 2)
+        {
+            break;
+        }
     }while(option != 2);
 }
 void storeExp(string category, double amount, string note)
@@ -156,6 +154,7 @@ void storeExp(string category, double amount, string note)
             fin << "Category: " <<category << endl;
             fin << "Amount: " <<amount << endl;
             fin << "Note: " <<note << endl;
+            fin<<"---------------\n";
             fin.close();
         }
         else
@@ -170,6 +169,7 @@ void storeDate(string date)
     {
         file<<"===============\n";
         file<<"Date: "<<date <<endl;
+        file<<"===============\n";
         file.close();
     }
     else{
