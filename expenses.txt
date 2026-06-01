@@ -1,32 +1,37 @@
-Date: 26-05-2026
-Category: Food
-Amount: 500
-Note: lunch
 ===============
-Date: 26-05-2026
-Category: Food
-Amount: 500
-Note: lunch
+Date: 29-05-2026
 ===============
-Date: 26-05-2026
 Category: Food
-Amount: 500
-Note: lunch
-===============
-Date: 27-05-2026
-Category: Shopping
 Amount: 300
-Note: medicine
+Note: Breakfast
+---------------
+Category: Transport
+Amount: 2200
+Note: Bus fare
+---------------
 ===============
-Date: 28-05-2026
+Date: 30-05-2026
+===============
 Category: Shopping
 Amount: 3000
-Note: frock
+Note: Frock
+---------------
+Category: Entertainment
+Amount: 1500
+Note: Movie
+---------------
 ===============
-Date: 28-05-2026
-Category: Transport
-Amount: 3000
-Note: travel
+Date: 01-06-2026
+===============
 Category: Shopping
 Amount: 2000
-Note: serum
+Note: Serum
+---------------
+Category: Bills
+Amount: 2600
+Note: PTCL
+---------------
+Category: Health
+Amount: 500
+Note: medicine
+---------------

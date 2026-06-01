@@ -3,12 +3,15 @@
 #include <string>
 using namespace std;
 void storeExp(string category, double amount, string note);
-void readExp();
 void addExp();
 void viewExp();
-void totalExp();
+void viewAllExpenses();
+void viewExpensesByDate();
+double totalExp();
 void categoryWiseTotal();
 void storeDate(string date);
+void setBudget();
+void budgetReport();
 
 double amount;
 string category;
@@ -19,114 +22,127 @@ const int SIZE = 100;
 int main()
 {
     int choice;
-    do{
-        cout<<"----------DAILY EXPENSE TRACKER----------" <<endl;
-        cout<<" 1. Add Expense" <<endl;
-        cout<<" 2. View Expense" <<endl;
-        cout<<" 3. Category wise total Expense" <<endl;
-        cout<<" 4. Overall total Expense" <<endl;
-        cout<<" 5. Exit" <<endl;
-        cout<<"Please enter your choice(1-5): ";
-        cin>> choice;
-        if(cin.fail())
+    do
+    {
+        cout << "----------DAILY EXPENSE TRACKER----------" << endl;
+        cout << " 1. Add Expense" << endl;
+        cout << " 2. View Expense" << endl;
+        cout << " 3. Category wise total Expense" << endl;
+        cout << " 4. Overall total Expense" << endl;
+        cout << " 5. Set budget" << endl;
+        cout << " 6. Budget report " << endl;
+        cout << " 7. Exit " << endl;
+        cout << "Please enter your choice(1-7): ";
+        cin >> choice;
+        if (cin.fail())
         {
             cin.clear();
             cin.ignore(1000, '\n');
-            cout << "Invalid input! Please enter only numbers from 1 to 5: ";
-            cin>> choice;
-        }
-        if(choice < 1 || choice > 5)
-        {
-            cout<<"Invalid choice! Please enter a number between 1 and 5: ";
+            cout << "Invalid input! Please enter only numbers from 1 to 7: ";
             cin >> choice;
         }
-        if(choice == 1)
+        if (choice < 1 || choice > 7)
+        {
+            cout << "Invalid choice! Please enter a number between 1 and 7: ";
+            cin >> choice;
+        }
+        if (choice == 1)
         {
             addExp();
         }
-       // else if(choice == 2)
+        else if (choice == 2)
         {
-       //     viewExp();
+            viewExp();
         }
-       // else if (choice == 3)
+        else if (choice == 3)
         {
-       //     categoryWiseTotal();
+            categoryWiseTotal();
         }
-       // else if (choice == 4)
+        else if (choice == 4)
         {
-       //     totalExp();
+            cout << "\n Overall Total Expense = " << totalExp()<< endl ;
         }
-    }while(choice != 5);
+        else if (choice == 5)
+        {
+            setBudget();
+        }
+        else if (choice == 6)
+        {
+            budgetReport();
+        }
+    } while (choice != 7);
     return 0;
 }
 void addExp()
 {
     int choice, option;
-    cout<<"Enter date(DD-MM-YYYY): ";
+    cout << "Enter date(DD-MM-YYYY): ";
     cin.ignore(1000, '\n');
     getline(cin, date);
     storeDate(date);
-    do{
-        cout<<"\n------CATEGORIES------ " <<endl;
-        cout<<"1. Food "<<endl;
-        cout<<"2. Transport" <<endl;
-        cout<<"3. Shopping"<<endl;
-        cout<<"4. Bills" <<endl;
-        cout<<"5. Health"<<endl;
-        cout<<"6. Education" <<endl;
-        cout<<"7. Entertainment" <<endl;
-        cout<<"8. Other"<<endl;
-        cout<<"Please select a category for which you want to add an expense: " ;
-        cin>> choice;
-        if(cin.fail())
+    do
+    {
+        cout << "\n------CATEGORIES------ " << endl;
+        cout << "1. Food " << endl;
+        cout << "2. Transport" << endl;
+        cout << "3. Shopping" << endl;
+        cout << "4. Bills" << endl;
+        cout << "5. Health" << endl;
+        cout << "6. Education" << endl;
+        cout << "7. Entertainment" << endl;
+        cout << "8. Other" << endl;
+        cout << "Please select a category for which you want to add an expense: ";
+        cin >> choice;
+        if (cin.fail())
         {
             cin.clear();
             cin.ignore(1000, '\n');
             cout << "Invalid input! Please enter only numbers(1-8): ";
-            cin>> choice;
+            cin >> choice;
         }
-        if(choice < 1 || choice > 8)
+        if (choice < 1 || choice > 8)
         {
-            cout <<"Invalid! Please enter numbers between 1 and 8: ";
-            cin>> choice;
+            cout << "Invalid! Please enter numbers between 1 and 8: ";
+            cin >> choice;
         }
-        if(choice == 1)
+        if (choice == 1)
             category = "Food";
-        else if(choice == 2)
+        else if (choice == 2)
             category = "Transport";
-        else if(choice == 3)
+        else if (choice == 3)
             category = "Shopping";
-        else if(choice == 4)
+        else if (choice == 4)
             category = "Bills";
-        else if(choice == 5)
+        else if (choice == 5)
             category = "Health";
-        else if(choice == 6)
+        else if (choice == 6)
             category = "Education";
-        else if(choice == 7)
+        else if (choice == 7)
             category = "Entertainment";
-        else if(choice == 8)
+        else if (choice == 8)
         {
             cin.ignore(1000, '\n');
             cout << "Enter category name: ";
             getline(cin, category);
         }
-        do{
+        do
+        {
             cout << "Please enter amount: ";
             cin >> amount;
 
-            if(cin.fail())
+            if (cin.fail())
             {
                 cin.clear();
                 cin.ignore(1000, '\n');
-                cout << "Invalid input! Enter numbers only"<<endl;
+                cout << "Invalid input! Enter numbers only" << endl;
                 amount = -1;
             }
-            else if(amount <= 0)
+            else if (amount <= 0)
             {
-                cout << "Amount must be greater than 0"<<endl;
+                cout << "Amount must be greater than 0" << endl;
             }
 
-        } while(amount <= 0);
+        } while (amount <= 0);
 
         cin.ignore(1000, '\n');
         cout << "Enter a note/description of where you have spent your money: ";
@@ -134,45 +150,288 @@ void addExp()
 
         storeExp(category, amount, note);
 
-        cout<<"\nExpense added successfully!"<<endl;
-        cout<<"1. Add another expense"<<endl;
-        cout<<"2. Finish day"<<endl;
-        cout<<"Please select an option: ";
-        cin>> option;
+        cout << "\nExpense added successfully!" << endl;
+        cout << "1. Add another expense" << endl;
+        cout << "2. Finish day" << endl;
+        cout << "Please select an option: ";
+        cin >> option;
         cin.ignore(1000, '\n');
-        if(option == 2)
+        if (option == 2)
         {
             break;
         }
-    }while(option != 2);
+    } while (option != 2);
 }
 void storeExp(string category, double amount, string note)
 {
     ofstream fin("expenses.txt", ios::app);
-        if(!fin.fail())
-        {
-            fin << "Category: " <<category << endl;
-            fin << "Amount: " <<amount << endl;
-            fin << "Note: " <<note << endl;
-            fin<<"---------------\n";
-            fin.close();
-        }
-        else
-        {
-            cout << "\nError opening file!";
-        }
+    if (!fin.fail())
+    {
+        fin << "Category: " << category << endl;
+        fin << "Amount: " << amount << endl;
+        fin << "Note: " << note << endl;
+        fin << "---------------\n";
+        fin.close();
+    }
+    else
+    {
+        cout << "\nError opening file!";
+    }
 }
 void storeDate(string date)
 {
     ofstream file("expenses.txt", ios::app);
-    if(!file.fail())
+    if (!file.fail())
     {
-        file<<"===============\n";
-        file<<"Date: "<<date <<endl;
-        file<<"===============\n";
+        file << "===============\n";
+        file << "Date: " << date << endl;
+        file << "===============\n";
         file.close();
     }
-    else{
-        cout<<"Error opening file!";
+    else
+    {
+        cout << "Error opening file!";
+    }
+}
+void viewExp()
+{
+    int choice;
+    cout << "\n-------------VIEW EXPENSES------------------\n";
+    cout << " 1. View all expense " << endl;
+    cout << " 2. view expense by date " << endl;
+    cout << "Please enter your choice : ";
+    cin >> choice;
+    if (choice == 1)
+    {
+        viewAllExpenses();
+    }
+    else if (choice == 2)
+    {
+        viewExpensesByDate();
+    }
+    else
+    {
+        cout << "Invalid choice!";
+    }
+}
+void viewAllExpenses()
+{
+    ifstream file("expenses.txt");
+    if (file.fail())
+    {
+        cout << "Error opening file!" << endl;
+    }
+    else
+    {
+        string line;
+        cout << "\n===== ALL EXPENSES =====\n";
+        while (getline(file, line))
+        {
+            cout << line << endl;
+        }
+        file.close();
+    }
+}
+void viewExpensesByDate()
+{
+    string searchDate;
+    string line;
+    bool found = false;
+    cin.ignore();
+    cout << "Enter Date (DD-MM-YYYY): ";
+    getline(cin, searchDate);
+    ifstream file("expenses.txt");
+    if (file.fail())
+    {
+        cout << "Error opening file!" << endl;
+        return ;
+    }
+    while (getline(file, line))
+    {
+        if (line == "Date: " + searchDate)
+        {
+            found = true;
+
+            cout << "\n===== EXPENSES FOR " << searchDate << " =====\n";
+
+            cout << line << endl;
+
+            while (getline(file, line))
+            {
+                if (line.find("Date:") != string::npos)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << line << endl;
+                }
+            }
+
+            break;
+        }
+    }
+    if (!found)
+    {
+        cout << "No expenses found for this date." << endl;
+    }
+    file.close();
+}
+void categoryWiseTotal()
+{
+    ifstream file("expenses.txt");
+
+    if (file.fail())
+    {
+        cout << "Error opening file!" << endl;
+        return ;
+    }
+
+    string word;
+    string currentCategory;
+
+    double food = 0;
+    double transport = 0;
+    double shopping = 0;
+    double bills = 0;
+    double health = 0;
+    double education = 0;
+    double entertainment = 0;
+    double other = 0;
+
+    while (file >> word)
+    {
+        if (word == "Category:")
+        {
+            file >> currentCategory;
+        }
+
+        else if (word == "Amount:")
+        {
+            double amt;
+            file >> amt;
+
+            if (currentCategory == "Food")
+                food += amt;
+            else if (currentCategory == "Transport")
+                transport += amt;
+            else if (currentCategory == "Shopping")
+                shopping += amt;
+            else if (currentCategory == "Bills")
+                bills += amt;
+            else if (currentCategory == "Health")
+                health += amt;
+            else if (currentCategory == "Education")
+                education += amt;
+            else if (currentCategory == "Entertainment")
+                entertainment += amt;
+            else
+                other += amt;
+        }
+    }
+
+    cout << "\n===== CATEGORY WISE TOTAL =====\n";
+    cout << "Food: " << food << endl;
+    cout << "Transport: " << transport << endl;
+    cout << "Shopping: " << shopping << endl;
+    cout << "Bills: " << bills << endl;
+    cout << "Health: " << health << endl;
+    cout << "Education: " << education << endl;
+    cout << "Entertainment: " << entertainment << endl;
+    cout << "Other: " << other << endl;
+
+    file.close();
+}
+double totalExp()
+{
+    ifstream file("expenses.txt");
+
+    if (file.fail())
+    {
+        cout << "Error opening file!" << endl;
+        return 0 ;
+    }
+
+    string word;
+    double total = 0;
+
+    while (file >> word)
+    {
+        if (word == "Amount:")
+        {
+            double amt;
+            file >> amt;
+            total += amt;
+        }
+    }
+    file.close();
+    return total;
+}
+void setBudget()
+{
+    double budget;
+
+    do
+    {
+        cout << "Enter your total  budget: ";
+        cin >> budget;
+
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            budget = -1;
+            cout << "Invalid input! Numbers only." << endl;
+        }
+        else if (budget <= 0)
+        {
+            cout << "Budget must be greater than 0." << endl;
+        }
+
+    } while (budget <= 0);
+
+    ofstream file("budget.txt");
+
+    if (file.fail())
+    {
+        cout << "Error opening file!" << endl;
+        return;
+    }
+
+    file << budget;
+    file.close();
+
+    cout << "Budget saved successfully!" << endl;
+}
+void budgetReport()
+{
+    ifstream budgetFile("budget.txt");
+
+    if (budgetFile.fail())
+    {
+        cout << "No budget found! Please set a budget first." << endl;
+        return;
+    }
+
+    double budget;
+    budgetFile >> budget;
+    budgetFile.close();
+
+    double totalSpent = totalExp();
+
+    cout << "\n========== BUDGET REPORT ==========" << endl;
+    cout << "Budget Amount: " << budget << endl;
+    cout << "Total Expenses: " << totalSpent << endl;
+
+    if (totalSpent > budget)
+    {
+        cout << "Budget Exceeded!" << endl;
+        cout << "Exceeded By: "
+             << totalSpent - budget << endl;
+    }
+    else
+    {
+        cout << "Remaining Budget: "
+             << budget - totalSpent << endl;
     }
 }
