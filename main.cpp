@@ -76,9 +76,45 @@ int main()
 void addExp()
 {
     int choice, option;
-    cout << "Enter date(DD-MM-YYYY): ";
+    string date;
+    bool valid;
     cin.ignore(1000, '\n');
-    getline(cin, date);
+    do
+    {
+        valid = true;
+        cout << "Enter date (DD-MM-YYYY): ";
+        getline(cin, date);
+
+        if(date.length() != 10)
+        {
+            valid = false;
+        }
+        else if(date[2] != '-' || date[5] != '-')
+        {
+            valid = false;
+        }
+        else
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                if(i == 2 || i == 5)
+                {
+                    continue;
+                }
+                if(date[i] < '0' || date[i] > '9')
+                {
+                   valid = false;
+                   break;
+                }
+            }
+        }
+        if(!valid)
+        {
+            cout << "Invalid date! Please enter in DD-MM-YYYY format." << endl;
+        }
+
+    } while(!valid);
+    
     storeDate(date);
     do
     {
