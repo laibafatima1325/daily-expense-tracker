@@ -1,4 +1,5 @@
 ===============
+<<<<<<< HEAD
 Date: 01-06-2026
 ===============
 Category: Food
@@ -9,3 +10,47 @@ Category: Bills
 Amount: 3025
 Note: PTCL
 ---------------
+=======
+Date: 29-05-2026
+===============
+Category: Food
+Amount: 300
+Note: Breakfast
+---------------
+Category: Transport
+Amount: 2200
+Note: Bus fare
+---------------
+===============
+Date: 30-05-2026
+===============
+Category: Shopping
+Amount: 3000
+Note: Frock
+---------------
+Category: Entertainment
+Amount: 1500
+Note: Movie
+---------------
+===============
+Date: 01-06-2026
+===============
+Category: Shopping
+Amount: 2000
+Note: Serum
+---------------
+Category: Bills
+Amount: 2600
+Note: PTCL
+---------------
+Category: Health
+Amount: 500
+Note: medicine
+---------------
+===============
+Date: 20-04-2026
+===============
+===============
+Date: 20-05-2026
+===============
+>>>>>>> e81d93656c6deaf26c865bc863483c0b35de6d32
