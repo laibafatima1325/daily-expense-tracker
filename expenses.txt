@@ -1,19 +1,11 @@
-Date: 26-05-2026
+===============
+Date: 01-06-2026
+===============
 Category: Food
 Amount: 500
-Note: lunch
-===============
-Date: 26-05-2026
-Category: Food
-Amount: 500
-Note: lunch
-===============
-Date: 26-05-2026
-Category: Food
-Amount: 500
-Note: lunch
-===============
-Date: 27-05-2026
-Category: Shopping
-Amount: 300
-Note: medicine
+Note: Lunch
+---------------
+Category: Bills
+Amount: 3025
+Note: PTCL
+---------------
